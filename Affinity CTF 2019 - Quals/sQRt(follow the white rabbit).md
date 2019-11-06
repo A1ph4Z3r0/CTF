@@ -93,6 +93,8 @@ The output looked promising,
 
 Converting it from Binary to Ascii:
 ```python
+from binascii import *
+
 print unhexlify(hex(int(flag.replace(' ',''),2))[2:-1])
 ```
 
