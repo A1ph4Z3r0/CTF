@@ -1,7 +1,7 @@
 # sQRt(follow the white rabbit)
 
 ##Problem
-![alt text](/files/qr1.png "QR Code")
+![QR Code](./files/qr1.png)
 
 ##Solution
 
