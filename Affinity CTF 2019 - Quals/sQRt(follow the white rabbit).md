@@ -1,10 +1,10 @@
 # sQRt(follow the white rabbit)
 
-##Problem
+## Problem
 
 ![QR Code](/CTF/Affinity CTF 2019 - Quals/files/qr1.png)
 
-##Solution
+## Solution
 
 Simply scanning the QR code,
 
