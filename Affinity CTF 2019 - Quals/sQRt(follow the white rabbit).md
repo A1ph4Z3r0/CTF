@@ -2,7 +2,7 @@
 
 ## Problem
 
-![QR Code](../files/qr1.png)
+![QR Code](./files/qr1.png)
 
 ## Solution
 
