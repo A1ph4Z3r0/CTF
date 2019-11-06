@@ -50,7 +50,50 @@ Megapixels                      : 0.168
 As the QR Code read follow the `white rabbit`, the extract the `Wh 173 R4b B17` portion from the metadata.
 
 At this stage, we didn't have much clue what to do, we assumed that the numbers in the metadata somehow formed a QR Code. 
-The length of the data section is 1681 characters which is 41x41. Furthermore, the image was 410x410 pixel. 
+The length of the data section is 1681 characters which is 41 x 41. Furthermore, the image was 410 x 410 pixel. 
 
 After a lot of trial and error, we eventually stumbled upon this [python module](https://pypi.org/project/qrcode/) that generates and reads QR Codes.
 
+```python
+import qrcode
+
+qr = qrcode.QRCode()
+qr.add_data('This is the key. Now... follow the white rabbit.')
+matrix = qr.get_matrix()
+print matrix
+```
+
+This resulted in a 41 x 41 boolean array, so we figured maybe the QR Code itself was the key...
+
+```python
+import qrcode
+
+qr = qrcode.QRCode()
+qr.add_data('This is the key. Now... follow the white rabbit.')
+matrix = qr.get_matrix()
+
+rabbit = "01  1 0 011011    01 00010011011100 1 10  1 11 1  000 01000 0001   000011 0 01 00111110010   00110 11110 0 000 101 0001001 0  001 011 00011010111 001111  000011 11111 0010000011 0111  01000010 110 01001 10000 01  111010 10 1  011001 110 010100   0101111 0110001 1 1  01000 01 00001 1 010111 00 0101 011000 1 0011  00111100100 0001  0  0101 0100100   010100  00000000 100100  001001 1 01001100 10100   10  001 1   00110011  0001 110000000 11 0111000110 0101   11  0010 0 0  0101000000  10001 0 0 11   00100 000100 001110010 00000 0 001 101 010 01011 01101 00 010 1111   1 001 10011 011010000 001010 10 100  0011000 1 00 1001 1  0 101 11 00100 0 0  0 1 01000010011010110   0001 00001 0 010  1101110 11  00000 00001010 00010 1 0 0 1100000  010101 010  0 0 011  1000010 1111 01000 0111  010 0100  0010001  0 10001101 1 01  0    1 00 0011 111 00110010 1 00 11100001000 0 000 011 01   001110010000 0111101111 11 00 01010  00  110  0 10111 00 0010 01110101 000 0001 001 10101 10  101 001 1101 101010100 000 0100 001110000 0  01 101110010010 0 000010 01 10101101 10011 0101 00 001011110 10 1 00 011 11101001 001 01 1  11 0001 10101 111001 100 0 010 01 0  1  1101  01111  11 00100  1       01  111  00  100 010 11   0  1  1 11 001 0 101    11        0   00 1 10  110       1 00 110 1  0  1  1  10     01      1 0 1 0   01 00  0   0 0       1      0       00 1 010011     0 0   1   1  00      1000    110 111 0     00    110 1      1 01 0   100011 1   1 1  0     0  1 01      0      00 1100       1 1    10  10  0      010  11  111001 1101  11 00000  0011  0 0111 01 01 111   110 10 10   1 0  1  101  11  1 1  10 0000111111111101 1000100  1 0 01 10 010   011  000   1111    11010 101010  0 1"
+
+flag = ''
+
+i = 0
+for bArray in matrix:
+    for b in bArray:
+        if(b):
+            flag += rabbit[i]
+        i = i + 1
+
+print flag
+```
+
+The output looked promising, 
+```
+01000001 01000110 01000110 01000011 01010100 01000110 01111011 00110000 01101000 00100000 01100100 00110011 01100001 01110010 00100001 00100000 00110000 01101000 00100000 01100100 00110011 00110100 01110010 00100001 00100000 00110001 00100000 00110101 01101000 00110100 00110001 00110001 00100000 01100010 00110011 00100000 00110111 00110000 00110000 00100000 00110001 00110100 01110100 00110011 00100001 01111101
+```
+
+Converting it from Binary to Ascii:
+```python
+print unhexlify(hex(int(flag.replace(' ',''),2))[2:-1])
+```
+
+Flag: **AFFCTF{0h d3ar! 0h d34r! 1 5h411 b3 700 14t3!}**
