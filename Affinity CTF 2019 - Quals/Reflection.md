@@ -3,7 +3,7 @@
 ## Problem
 ![gif](./files/task.gif)
 
-##Solution
+## Solution
 
 This was a forensics challenge so we try to look for embedded files,
 
