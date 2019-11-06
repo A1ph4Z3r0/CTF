@@ -3,11 +3,12 @@
 ## Problem
 
 The problem simply links the URL to the webpage,
-
+![Webpage](./files/DownloadMeWebpage.png)
 
 ## Solution
 
-Simply clicking on `flag.txt` results in an `Invalid token.` error. 
+Clicking on `flag.txt` results in an `Invalid token` error.
+
 Viewing the source code, we can see that the each file has a token associated with it. 
 
 ```
@@ -18,6 +19,7 @@ download.php?file=flag.txt&token=
 ```
 
 The length of each token is 32 characters suggesting it might be an MD5 hash. 
+
 Using [Hashkiller](https://hashkiller.co.uk/Cracker),
 ```
 6f2268bd1d3d3ebaabb04d6b5d099425 MD5 753 or osCommerce 75:3
