@@ -2,7 +2,7 @@
 
 ## Problem
 Sophisticated malware got into our server and malformed all the images. Can you find the name of that bug?
-![Malformed Image](../files/46gnp.png)
+![Malformed Image](./files/46gnp.png)
 
 ## Solution
 
