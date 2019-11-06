@@ -7,7 +7,7 @@
 
 This was a forensics challenge so we try to look for embedded files,
 
-```shell
+```sh
 $ binwalk -e task.gif
 
 DECIMAL       HEXADECIMAL     DESCRIPTION
