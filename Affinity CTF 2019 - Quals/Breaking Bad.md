@@ -26,7 +26,8 @@ flag = ''
 for name in cipher:
     flag += chr(element(name).atomic_number)
 
-print 'AFFCTF{%s}' % flag
+print 'AFFCTF{' + flag + '}'
 ```
 
 Flag: **AFFCTF{Ch3m1strY_1s_4Dd1CtiVe}**
+
