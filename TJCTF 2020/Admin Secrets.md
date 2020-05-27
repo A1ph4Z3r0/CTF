@@ -14,7 +14,7 @@ Visiting the website, we can create an account. The website is called Textbin, v
 
 Trying `<script>alert(1)</script>` confirms that.
 
-Like with most XSS challenges, I assumed we need to steal the admin's session cookie allowing us to login as them. So I wrote a small cookie stealing script and have the admin's cookie sent over to a requestbin. 
+Like with most XSS challenges, I assumed we need to steal the admin's session cookie allowing us to login as them. So I wrote a small cookie stealing script and have the admin's cookie sent over to a [requestbin](https://requestbin.com/). 
 
 ```html
 <script>
